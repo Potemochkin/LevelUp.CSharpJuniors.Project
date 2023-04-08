@@ -1,0 +1,36 @@
+﻿@page "/products/all"
+
+@using SimpleStore.UI.Model
+@using SimpleStore.UI.Services
+
+@inject IProductsServiceProxy Proxy
+
+@if(_products == null)
+{
+    <p>Нет данных</p>
+}
+else
+{
+
+
+    <h2>Список товаров</h2>
+    <table class="table">
+        <tr><td>Название</td><td>Описание</td></tr>
+        @foreach (var product in _products)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+            </tr>
+        }
+    </table>
+}
+
+@code {
+    private IEnumerable<ProductItem> _products = Enumerable.Empty<ProductItem>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _products = await Proxy.GetAllProducts();
+    }
+}

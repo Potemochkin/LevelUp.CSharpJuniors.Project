@@ -1,13 +1,26 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
-using SimpleStore.UI.Data;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+using SimpleStore.UI.Model;
+using SimpleStore.UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-builder.Services.AddSingleton<WeatherForecastService>();
+
+var endpoints = builder.Configuration.GetSection("Endpoints").Get<Endpoints>();
+
+builder.Services.AddHttpClient("default",
+    c =>
+    {
+        c.BaseAddress = new Uri(endpoints.BaseUrl);
+     });
+
+builder.Services.AddScoped<IOptions<Endpoints>>(_ => new OptionsWrapper<Endpoints>(endpoints));
+builder.Services.AddScoped<IProductsServiceProxy, ProductsServiceProxy>();
 
 var app = builder.Build();
 

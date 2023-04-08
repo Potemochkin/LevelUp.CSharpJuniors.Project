@@ -5,7 +5,7 @@ VisualStudioVersion = 17.5.33414.496
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StoreProject.Api", "StoreProject\StoreProject.Api.csproj", "{C9D4E19D-7D91-4281-9CDB-D97C2A9B8055}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleStore.UI", "SimpleStore.UI\SimpleStore.UI.csproj", "{59B3C922-0000-4289-AFEE-C877016F5516}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleStore.UI", "SimpleStore.UI\SimpleStore.UI.csproj", "{59B3C922-0000-4289-AFEE-C877016F5516}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
